@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('img/background.jpg'); /* Substitua pelo caminho da imagem */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza verticalmente */
+            align-items: center;    /* Centraliza horizontalmente */
+        }   
+
+        .container h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #575757;
+            color: #fff;
+            font-size: 14px;
+        }
+        .form-group input::placeholder {
+            color: #ccc;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .form-footer a {
+            color: #4aaefc;
+            text-decoration: none;
+        }
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #575757;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #6a6a6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LOGIN</h1>
+        <!-- O formulário usa a rota de login configurada no Flask -->
+        <form action="{{ url_for('login') }}" method="POST">
+            <div class="form-group">
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+            <div class="form-footer">
+                Não tem uma conta? <a href="{{ url_for('cadastro') }}">Cadastre-se</a>
+            </div>
+            <button type="submit" class="submit-btn">ENTRAR</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Plano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #4b4b61;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            background-color: #4b4b61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #2f2f49;
+        }
+
+        .edit-form {
+            display: none;
+            background-color: #4b4b61;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .edit-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .edit-form input {
+            width: calc(100% - 30px);
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .edit-benefits {
+            background-color: #333;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .edit-benefits input {
+            background: none;
+            border: none;
+            color: white;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Alterar plano</div>
+        <div class="card">
+            <div class="card-content">
+                <strong>PREMIUM</strong><br>
+                + acesso a uma carteira de investimentos feita por nossa IA<br>
+                + notificações de notícias em primeira mão.
+            </div>
+            <div class="price">R$ 39,90</div>
+        </div>
+        <div class="buttons">
+            <button class="button" onclick="openEditForm()">Adicionar Plano</button>
+            <button class="button" onclick="openEditForm()">Alterar Plano</button>
+        </div>
+
+        <div class="edit-form" id="editForm">
+            <label for="planName">Nome:</label>
+            <input type="text" id="planName" value="PREMIUM">
+            
+            <label for="planPrice">Preço:</label>
+            <input type="text" id="planPrice" value="39,90">
+
+            <label>Benefícios:</label>
+            <div class="edit-benefits">
+                <input type="text" value="+ acesso a uma carteira de investimentos feita por nossa IA">
+            </div>
+            <div class="edit-benefits">
+                <input type="text" value="+ notificações de notícias em primeira mão.">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openEditForm() {
+            var form = document.getElementById('editForm');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
