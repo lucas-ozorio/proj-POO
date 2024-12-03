@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+            background-image: url('img/background.jpg'); /* Substitua pelo caminho da imagem */
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            background-color: #1E1E1E;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .menu a:hover {
+            background-color: #333;
+        }
+        .account-btn {
+            cursor: pointer;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #333;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease-in-out;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 999;
+        }
+        .sidebar.open {
+            right: 0;
+        }
+        .sidebar h2 {
+            margin: 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #575757;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background-color: #6a6a6a;
+        }
+        .close-btn {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .close-btn:hover {
+            color: #ff4444;
+        }
+        .content {
+            padding: 20px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 998;
+        }
+        .overlay.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Hawkeye Capital</h1>
+        </div>
+        <nav class="menu">
+            <a href="/stocks">AÇÕES</a>
+            <a href="/news">NOTÍCIAS</a>
+            <a href="/favorites">FAVORITOS</a>
+        </nav>
+        <button class="account-btn" onclick="toggleSidebar()">☰</button>
+    </header>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    <div class="sidebar" id="sidebar" onclick="stopPropagation(event)">
+        <button class="close-btn" onclick="closeSidebarByButton()">X</button>
+        <h2>Usuário</h2>
+        <a href="/subscription">Assinatura: PREMIUM</a>
+        <a href="/billing">Fatura</a>
+        <form method="POST" action="/help" style="margin: 0;">
+            <button type="submit" class="sidebar-btn">Ajuda</button>
+        </form>
+        <form method="POST" action="/message" style="margin: 0;">
+            <button type="submit" class="sidebar-btn">Mensagem</button>
+        </form>
+    </div>
+    <div class="content">
+        <h2>Bem-vindo à Hawkeye Capital</h2>
+        <p>Hawkeye Capital é uma fintech inovadora criada para transformar a maneira como as pessoas acessam o mercado financeiro. Nossa plataforma combina tecnologia de ponta com inteligência de mercado para oferecer uma experiência intuitiva e personalizada. Aqui, você pode explorar ações, acessar análises detalhadas e acompanhar as últimas notícias do mercado, tudo em um só lugar.
+
+            Sabemos que o mundo dos investimentos pode ser desafiador, especialmente com o volume de informações disponível. Por isso, nossa missão é simplificar esse processo. Com recursos avançados de recomendação e ferramentas personalizadas, ajudamos você a descobrir oportunidades alinhadas aos seus objetivos, além de permitir que você salve e gerencie seus ativos favoritos de maneira prática e eficiente.
+            
+            Seja você um investidor iniciante ou experiente, a Hawkeye Capital foi projetada para empoderar suas decisões financeiras. Oferecemos insights em tempo real, gráficos interativos e notícias relevantes, garantindo que você esteja sempre à frente no mercado financeiro. Na Hawkeye, acreditamos que investir no futuro começa com acesso a informações claras e confiáveis.</p>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        function closeSidebarByButton() {
+            closeSidebar();
+        }
+
+        function stopPropagation(event) {
+            event.stopPropagation();
+        }
+    </script>
+</body>
+</html>
