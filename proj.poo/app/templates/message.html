@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre em contato</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #333;
+        }
+        .input-container input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+        }
+        .btn-send {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-send:hover {
+            background-color: #0056b3;
+        }
+        .shortcuts {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .shortcuts a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            display: block;
+            margin: 5px 0;
+        }
+        .shortcuts a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Entre em contato</h1>
+        <p>Conte-nos mais para sugerirmos a melhor solução</p>
+        <form action="/message" method="POST">
+            <div class="input-container">
+                <input type="text" id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui..." required>
+            </div>
+            <button type="submit" class="btn-send">Enviar mensagem</button>
+        </form>
+        <div class="shortcuts">
+            <h3>Atalhos</h3>
+            <a href="cadastro">Atualizar email</a>
+            <a href="cadastro">Atualizar senha</a>
+            <a href="billing">Atualizar forma de pagamento</a>
+            <a href="login">Cancelar conta</a>
+            <a href="billing">Exibir histórico de pagamento</a>
+        </div>
+    </div>
+</body>
+</html>

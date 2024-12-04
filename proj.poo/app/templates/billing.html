@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Forma de Pagamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0e0e0;
+            color: #000;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card .details {
+            display: flex;
+            align-items: center;
+        }
+        .card .details img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .card .update-btn, .card .delete-btn {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .card .delete-btn {
+            background-color: #e74c3c;
+        }
+        .add-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+        .card input {
+            background-color: #333; /* Cor de fundo igual ao container */
+            color: #fff; /* Cor do texto dentro do campo */
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciar a forma de pagamento</h1>
+        <!-- Existing payment cards -->
+        <div id="payment-cards">
+            <div class="card">
+                <div class="details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard Logo">
+                    <span>Mastercard ....7845</span>
+                </div>
+                <button class="update-btn" onclick="toggleEdit(this)">Atualizar</button>
+                <button class="delete-btn" onclick="deleteCard(this)">Apagar</button>
+            </div>
+        </div>
+
+        <!-- Button to add new payment card -->
+        <div class="add-card" onclick="addCard()">+</div>
+    </div>
+
+    <script>
+        // Function to add a new card
+        function addCard() {
+            const newCard = document.createElement('div');
+            newCard.classList.add('card');
+
+            const newCardDetails = document.createElement('div');
+            newCardDetails.classList.add('details');
+
+            const newCardImage = document.createElement('img');
+            newCardImage.src = "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png"; // Placeholder logo
+            newCardImage.alt = "Mastercard Logo";
+
+            const newCardText = document.createElement('input');
+            newCardText.type = 'text';
+            newCardText.placeholder = 'Digite os dados do cartão';
+
+            newCardDetails.appendChild(newCardImage);
+            newCardDetails.appendChild(newCardText);
+
+            const newCardUpdateButton = document.createElement('button');
+            newCardUpdateButton.classList.add('update-btn');
+            newCardUpdateButton.textContent = 'Atualizar';
+            newCardUpdateButton.onclick = function() {
+                toggleEdit(newCardUpdateButton);
+            };
+
+            const newCardDeleteButton = document.createElement('button');
+            newCardDeleteButton.classList.add('delete-btn');
+            newCardDeleteButton.textContent = 'Apagar';
+            newCardDeleteButton.onclick = function() {
+                deleteCard(newCardDeleteButton);
+            };
+
+            newCard.appendChild(newCardDetails);
+            newCard.appendChild(newCardUpdateButton);
+            newCard.appendChild(newCardDeleteButton);
+
+            document.getElementById('payment-cards').appendChild(newCard);
+        }
+
+        
+        function toggleEdit(button) {
+            const card = button.parentElement;
+            const inputField = card.querySelector('input');
+            const currentText = card.querySelector('.details span');
+            
+            if (inputField.disabled) {
+                
+                inputField.disabled = false;
+                button.textContent = 'Salvar'; 
+            } else {
+               
+                inputField.disabled = true;
+                currentText.textContent = `Mastercard ${inputField.value.substring(inputField.value.length - 4)}`; 
+                button.textContent = 'Atualizar'; // 
+            }
+        }
+
+        // Function to delete a card
+        function deleteCard(button) {
+            const cardToDelete = button.parentElement;
+            cardToDelete.remove();
+        }
+    </script>
+</body>
+</html>

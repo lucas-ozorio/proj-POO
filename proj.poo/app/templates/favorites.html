@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            background-color: #1E1E1E;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #ccc;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .menu a:hover, .menu a.active {
+            background-color: #333;
+            color: #fff;
+        }
+        .content {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        .search-section, .favorites-section {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+        }
+        .search-section h2, .favorites-section h2 {
+            margin: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .search-section input {
+            width: calc(100% - 30px);
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .search-section .stock-item,
+        .favorites-section .favorite-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #575757;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-section .stock-item:hover,
+        .favorites-section .favorite-item:hover {
+            background-color: #6a6a6a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="goToHome()">
+            <h1>Hawkeye Capital</h1>        
+        </div>
+        <nav class="menu">
+            <a href="stocks">AÇÕES</a>
+            <a href="news">NOTÍCIAS</a>
+            <a href="favorites" class="active">FAVORITOS</a>
+        </nav>
+        <button class="account-btn" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">☰</button>
+    </header>
+    <div class="content">
+        <div class="search-section">
+            <h2>Adicionar Favorito</h2>
+            <input type="text" id="favoriteInput" placeholder="Digite o nome da ação e pressione Enter...">
+        </div>
+        <div class="favorites-section">
+            <h2>Ações Favoritas</h2>
+            <div id="favoritesContainer">
+                <!-- Ações favoritas serão adicionadas aqui -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Função para redirecionar para a página inicial
+        function goToHome() {
+            window.location.href = '/home'; // Substitua '/home' pela rota ou caminho da página inicial
+        }
+
+        // Adiciona o evento para capturar o Enter pressionado no campo de input
+        const favoriteInput = document.getElementById('favoriteInput');
+        const favoritesContainer = document.getElementById('favoritesContainer');
+
+        favoriteInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Evita o envio do formulário
+
+                const actionName = favoriteInput.value.trim();
+                if (actionName) {
+                    // Cria um novo elemento para a ação favorita
+                    const favoriteItem = document.createElement('div');
+                    favoriteItem.classList.add('favorite-item');
+                    favoriteItem.textContent = actionName;
+
+                    // Adiciona o novo item à lista de favoritos
+                    favoritesContainer.appendChild(favoriteItem);
+
+                    // Limpa o campo de input
+                    favoriteInput.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
