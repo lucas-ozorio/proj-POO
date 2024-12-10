@@ -143,12 +143,8 @@
         <h2>Usuário</h2>
         <a href="/subscription">Assinatura: PREMIUM</a>
         <a href="/billing">Fatura</a>
-        <form method="POST" action="/help" style="margin: 0;">
-            <button type="submit" class="sidebar-btn">Ajuda</button>
-        </form>
-        <form method="POST" action="/message" style="margin: 0;">
-            <button type="submit" class="sidebar-btn">Mensagem</button>
-        </form>
+        <a href ="/help">Ajuda</a>        
+        <a href ="/message">Mensagem</a>
     </div>
     <div class="content">
         <div>
@@ -182,6 +178,13 @@
         function stopPropagation(event) {
             event.stopPropagation();
         }
+        function goToHelp() {
+            window.location.href = '/help'; // Substitua '/home' pela rota ou caminho da página inicial
+        }
+        function goToMessage() {
+            window.location.href = '/message'; // Substitua '/home' pela rota ou caminho da página inicial
+        }
+    </script>
     </script>
 </body>
 </html>
